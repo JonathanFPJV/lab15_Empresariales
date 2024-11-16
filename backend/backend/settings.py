@@ -11,6 +11,15 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+from datetime import timedelta
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),  # Token de acceso válido por 60 minutos
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),  # Token de actualización válido por 7 días
+    'ROTATE_REFRESH_TOKENS': False,  # No rota el token de actualización automáticamente
+    'BLACKLIST_AFTER_ROTATION': True,  # Invalida tokens rotados
+    'AUTH_HEADER_TYPES': ('Bearer',),  # Tipo de cabecera para autenticación
+}
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
